@@ -21,7 +21,7 @@ class User(Base):
     email = Column(String(40),unique=True,nullable=False)
     password  =Column(String(100),nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
-
+    phone_number = Column(String(20))
 
 class Vote(Base):
     __tablename__="votes"
