@@ -2,10 +2,9 @@ from fastapi import FastAPI,Response,status ,HTTPException ,Depends ,APIRouter
 from sqlalchemy.orm import Session 
 from typing import List
 
-import sys
-sys.path.append(r"/home/aakash/Desktop/Fast_api/app")
-import models, schemas ,utils
-from database import get_db
+from .. import utils
+from ..database import get_db
+from .. import models,schemas ,oauth2
 
 
 router = APIRouter(
@@ -46,7 +45,7 @@ def get_user(id:int,db: Session = Depends(get_db)):
     user_query = db.query(models.User).filter(models.User.id == id).first()
 
     if not user_query:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"post with id: {id} was not found :(")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"user with id: {id} was not found :(")
     return user_query
 
 @router.put("/users/{id}",response_model=schemas.UserOut)

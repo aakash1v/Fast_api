@@ -1,14 +1,9 @@
 from fastapi import FastAPI,Response,status ,HTTPException ,Depends ,APIRouter
 from sqlalchemy.orm import Session 
 from typing import List,Optional
-import sys
-import oauth2
-import datetime
 from sqlalchemy import func
-
-sys.path.append(r"/home/aakash/Desktop/Fast_api/app")
-import models, schemas 
-from database import get_db
+from ..database import get_db
+from .. import models,schemas ,oauth2
 
 router = APIRouter(
     prefix='/posts',

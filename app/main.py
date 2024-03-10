@@ -1,10 +1,10 @@
 # python virtual environments..   --isolated environment..
 from fastapi import FastAPI
-import models
-from database import engine
-from routers import user,post,auth,votes
-from config import settings
 from fastapi.middleware.cors import CORSMiddleware
+from .routers import user,post,auth,votes
+from .config import settings
+from .database import engine
+from .import models
 
 # models.Base.metadata.create_all(bind=engine)  --to create table..
 # origins =["https://www.google.com","https://www.youtube.com"]
